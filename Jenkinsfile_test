@@ -20,13 +20,11 @@
                }
         }
     }
-     stage('Timeout') {
-    steps {
-        script {
-            timeout(time: 1, unit: 'MINUTES') {
-                sleep 120
-            }
-        }
+        stage('Sleep') {
+           steps {
+           echo 'Waiting...'
+           sleep 20
+          echo 'Deployment Starting...'
     }
 }
 
