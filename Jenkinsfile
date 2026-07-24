@@ -62,10 +62,20 @@ pipeline {
         script {
             retry(3) {
                 sh "false"
+     }
+               }
+        }
+    }
+     stage('Timeout') {
+    steps {
+        script {
+            timeout(time: 1, unit: 'MINUTES') {
+                sleep 120
             }
         }
     }
 }
+     
 
     }
 }
