@@ -57,5 +57,15 @@ pipeline {
 
         }    
 
+        stage('Retry Build') {
+    steps {
+        script {
+            retry(3) {
+                sh "false"
+            }
+        }
+    }
+}
+
     }
 }
