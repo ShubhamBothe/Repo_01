@@ -46,5 +46,14 @@ pipeline {
 
        }
 
+       stage('String Interpolation') {
+            steps {
+                script {
+                    def app = "Inventory"
+                    def version = "1.0"
+                    echo "Building ${app} Version ${version}"
+                }
+            }
+
     }
 }
