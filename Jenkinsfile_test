@@ -1,0 +1,34 @@
+    pipeline {
+    agent { label "python" }
+
+    triggers {
+        pollSCM('H/3 * * * *')
+    }
+
+    environment {
+        APP = "Inventory"
+        ENV = "Development"
+    }
+
+    stages {
+    stage('Retry Build') {
+    steps {
+        script {
+            retry(3) {
+                sh "false"
+     }
+               }
+        }
+    }
+     stage('Timeout') {
+    steps {
+        script {
+            timeout(time: 1, unit: 'MINUTES') {
+                sleep 120
+            }
+        }
+    }
+}
+
+    }
+    }
