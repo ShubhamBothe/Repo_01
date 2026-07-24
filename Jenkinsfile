@@ -1,31 +1,38 @@
 pipeline {
- 
-    agent {label "python"}
+    agent { label "python" }
+
     triggers {
-     pollSCM('H/3 * * * *')
+        pollSCM('H/3 * * * *')
     }
+
     environment {
-    APP="Inventory"
-    ENV="Development"
-}
+        APP = "Inventory"
+        ENV = "Development"
+    }
+
     stages {
- 
+
         stage('Welcome') {
- 
             steps {
                 script {
-                        def app="Shopping"
-                        def version="1.0"
-                        echo app
-                        echo ENV
-                    }
- 
+                    def app = "Shopping"
+                    def version = "1.0"
+                    echo app
+                    echo ENV
+                }
+
                 echo "Welcome to Jenkins Pipeline"
- 
             }
- 
         }
- 
+
+        stage('Execute Linux Commands') {
+            steps {
+                sh "pwd"
+                sh "hostname"
+                sh "whoami"
+                sh "date"
+            }
+        }
+
     }
- 
 }
