@@ -15,8 +15,9 @@ pipeline {
         stage('Welcome') {
             steps {
                 script {
-                    def app = "Shopping"
+                    def app = "Inventory"
                     def version = "1.0"
+                    echo version
                     echo app
                     echo ENV
                 }
