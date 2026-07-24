@@ -35,5 +35,16 @@ pipeline {
             }
         }
 
+       stage('Built-in Jenkins Variables') {
+       steps{
+        echo "BUILD_NUMBER = ${BUILD_NUMBER}"
+                echo "JOB_NAME = ${JOB_NAME}"
+                echo "NODE_NAME = ${NODE_NAME}"
+                echo "WORKSPACE = ${WORKSPACE}"
+                echo "BUILD_ID = ${BUILD_ID}"
+            } 
+
+       }
+
     }
 }
