@@ -1,4 +1,4 @@
-    pipeline {
+pipeline {
     agent { label "python" }
 
     triggers {
@@ -11,31 +11,33 @@
     }
 
     stages {
-    stage('Retry Build') {
-    steps {
-        script {
-            retry(3) {
-                sh "true"
-     }
-               }
+        stage('Retry Build') {
+            steps {
+                script {
+                    retry(3) {
+                        sh "true"
+                    }
+                }
+            }
         }
-    }
+
         stage('Sleep') {
-           steps {
-           echo 'Waiting...'
-           sleep 20
-          echo 'Deployment Starting...'
-    }
-}
+            steps {
+                echo 'Waiting...'
+                sleep 20
+                echo 'Deployment Starting...'
+            }
+        }
 
         stage('Task 4 - Input Approval') {
-    steps {
-        script {
-            input message: 'Deploy to Production?', ok: 'Approve'
-            echo "Deployment approved"
+            steps {
+                script {
+                    input message: 'Deploy to Production?', ok: 'Approve'
+                    echo "Deployment approved"
+                }
+            }
         }
-    }
-        }
+
         stage('Task 5 - User Selection') {
             steps {
                 script {
@@ -54,7 +56,7 @@
             }
         }
 
-         stage('Task 6 - Error Handling') {
+        stage('Task 6 - Error Handling') {
             steps {
                 script {
                     try {
@@ -66,7 +68,8 @@
                 }
             }
         }
-               stage('Task 7 - Build Status') {
+
+        stage('Task 7 - Build Status') {
             steps {
                 script {
                     echo "Build Number: ${currentBuild.number}"
@@ -80,5 +83,6 @@
     post {
         always {
             echo "Pipeline completed"
+        }
     }
-    }
+}
