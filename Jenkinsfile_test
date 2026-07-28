@@ -54,5 +54,18 @@
             }
         }
 
+         stage('Task 6 - Error Handling') {
+            steps {
+                script {
+                    try {
+                        sh "abcd"
+                    } catch (Exception e) {
+                        echo "Command Failed"
+                    }
+                    echo "Pipeline continues..."
+                }
+            }
+        }
+
     }
     }
