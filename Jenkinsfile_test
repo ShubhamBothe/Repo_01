@@ -66,6 +66,19 @@
                 }
             }
         }
+               stage('Task 7 - Build Status') {
+            steps {
+                script {
+                    echo "Build Number: ${currentBuild.number}"
+                    echo "Build Result: ${currentBuild.result}"
+                    echo "Build Duration: ${currentBuild.duration}"
+                }
+            }
+        }
+    }
 
+    post {
+        always {
+            echo "Pipeline completed"
     }
     }
