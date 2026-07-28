@@ -36,6 +36,23 @@
         }
     }
         }
+        stage('Task 5 - User Selection') {
+            steps {
+                script {
+                    def envChoice = input(
+                        message: 'Choose target environment',
+                        parameters: [
+                            choice(
+                                name: 'ENVIRONMENT',
+                                choices: "Dev\nQA\nUAT\nProduction",
+                                description: 'Select deployment environment'
+                            )
+                        ]
+                    )
+                    echo "Selected environment: ${envChoice}"
+                }
+            }
+        }
 
     }
     }
