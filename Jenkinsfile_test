@@ -28,5 +28,14 @@
     }
 }
 
+        stage('Task 4 - Input Approval') {
+    steps {
+        script {
+            input message: 'Deploy to Production?', ok: 'Approve'
+            echo "Deployment approved"
+        }
+    }
+        }
+
     }
     }
